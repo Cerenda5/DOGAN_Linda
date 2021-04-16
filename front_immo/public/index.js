@@ -10,7 +10,7 @@ const deleteAnnonce = id => {
       })
 }
 
-const updateAnnonce = id => {
+const update = id => {
   event.preventDefault()
 
   fetch(`http://localhost:3000/update/${id}`, {
@@ -35,26 +35,32 @@ const updateAnnonce = id => {
       })
 }
 
-const createAnnonce = () => {
-  event.preventDefault()
-  fetch('http://localhost:3000/', {
-      method: 'post',
+function create() {
+    event.preventDefault();
+  
+    fetch("http://localhost:3000/", {
+      method: "post",
       body: JSON.stringify({
-          titre: document.getElementById('titre').value,
-          description: document.getElementById('description').value,
-          adresse: document.getElementById('adresse').value,
-          code_postal: document.getElementById('code_postal').value,
-          ville: document.getElementById('ville').value,
-          prix: document.getElementById('prix').value,
+        titre: document.getElementById("titre").value,
+        description: document.getElementById("description").value,
+        adresse: document.getElementById("adresse").value,
+        code_postal: document.getElementById("code_postal").value,
+        ville: document.getElementById("ville").value,
+        prix: document.getElementById("prix").value,
       }),
       headers: {
-          'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
-  })
-      .then(() => {
-          window.location.assign('/')
+    })
+      .then((response) => {
+        return response.json();
       })
-      .catch(err => {
-          throw err
+      .then((json) => {
+        console.log(json);
+  
+        window.location.replace("/");
       })
-}
+      .catch((err) => {
+        throw err;
+      });
+  }
