@@ -1,0 +1,14 @@
+<%- include('./partial/head') %>
+<a href="/">Retour</a>
+<h1><%= annonce.titre %></h1>
+<p>Description : <%= annonce.description %></p>
+
+<div>Adresse : <%= annonce.adresse %></div>
+<div>Code Postal : <%= annonce.code_postal %></div>
+<div>Ville : <%= annonce.ville %></div>
+<div>Prix : <%= annonce.prix %></div>
+
+<a href="/update/<%= annonce._id %>">Modifier</a>
+<button type="button" onclick="deleteAnnonce('<%= annonce._id %>')">
+    Supprimer
+</button>
